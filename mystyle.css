@@ -1,0 +1,7 @@
+button {
+	display: block;
+}
+li {
+	list-style: none; 
+	margin: .5em;
+}
