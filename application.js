@@ -1,10 +1,11 @@
  $(document).ready(function(){
-        var $body = $('body');
-        var index = streams.home.length - 1;
+        var $body = $('body .mainfeed'),
+            tweetsShown=0;
+        
         // broke out tweet message, user, date into separate components
-        var tweetBuilder = function (tweet) {
+        var tweetConstructor = function (tweet) {
                 var $tweet = $('<div class="tweet-block"></div>'),
-                  $date = $('<div class="date"</div>').text(moment(tweet.created_at).fromNow()),
+                  $date = $('<div class="date"</div>').text('at' + moment(tweet.created_at).format("h:mm:ss a, dddd, MMMM Do YYYY")),
                   $message = $('<div class="message">').text(tweet.message),
                   $user = $('<div class="user"</div>').text('@' + tweet.user);
                   $message.appendTo($tweet);
@@ -13,18 +14,25 @@
                 return $tweet;
               };
 
-
-        while(index >= 0){
+        var tweetAdder = function () {
+        var index = streams.home.length - 1;
+        while (index > tweetsShown){
           var tweet = streams.home[index];
-          var $tweet = tweetBuilder(tweet);
-          $tweet.appendTo($body);
-          index -= 1;
-        }
+          var $tweet = tweetConstructor(tweet);
+          $tweet.prependTo($body);
+          tweetsShown++;
+          index--;
+          }
+        };
+        tweetAdder();
+
+        $('.new-tweets').on('click', tweetAdder);
       
 
 
         
               });
+      
               
 
 
