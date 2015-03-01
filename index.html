@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link rel="stylesheet" type="text/css" href="normalize.css">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="mystyle.css">
     <script src="jquery.js"></script>
     <script src="data_generator.js"></script>
@@ -8,15 +10,16 @@
     <script src="application.js"></script>
   </head>
   <body>
-
   <header><h1>Twittler</h1></header>
- <div id='main'>
+  <div class="content">
+ <div id="main">
   <button class="new-tweets">Load Latest Tweets</button>
   <div class="mainfeed"></div>
   </div>
-  <div id='user hidden'>
-  <button class="return-to-feed">Return to Home Feed</button>
-  <div class="userfeed"></div>
+  <div id="user" class="hidden">
+      <button class="return-to-feed">Return to Home Feed</button>
+      <div class="userfeed"></div>
+  </div>
   </div>
   <footer></footer> 
   </body>
